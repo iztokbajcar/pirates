@@ -1,2 +1,2 @@
 # pirates
-A pygame project for learning purposes.
+A pirate-themed game in python using the [pygame](https://www.pygame.org/) library.
