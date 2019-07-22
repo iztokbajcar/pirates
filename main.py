@@ -57,5 +57,5 @@ while True:
 
     screen.fill((0, 0, 0)) # Clears the screen
     screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH))
-    
+
     pygame.display.update()
