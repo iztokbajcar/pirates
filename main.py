@@ -56,5 +56,11 @@ while True:
                             
 
     screen.fill((0, 0, 0)) # Clears the screen
-    screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH)) 
+    screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH))
+
+    # Renders the minimap
+    minimap = world.copy()
+    pygame.draw.rect(minimap, (255, 0, 0), (offsetX, offsetY, screenW, screenH), 10)
+    screen.blit(pygame.transform.scale(minimap, (100, 100)), (0, 0))
+    
     pygame.display.update()
