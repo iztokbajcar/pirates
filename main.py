@@ -15,8 +15,6 @@ worldH = world.get_height()
 offsetX = int(worldW / 2 - screenW / 2)
 offsetY = int(worldH / 2 - screenH / 2)
 
-offsetAmount = 1
-
 pygame.init()
 
 screen = pygame.display.set_mode((screenW, screenH))
@@ -31,36 +29,12 @@ while True:
             pygame.quit()
             sys.exit()
 
-    keys = pygame.key.get_pressed()
-        
-    if keys[pygame.K_LEFT]:
-        if offsetX >= offsetAmount:
-            offsetX -= offsetAmount
-        else:
-            offsetX = 0
-    if keys[pygame.K_RIGHT]:
-        if offsetX + offsetAmount <= worldW - screenW:
-            offsetX += offsetAmount
-        else:
-            offsetX = worldW - screenW
-    if keys[pygame.K_UP]:
-        if offsetY >= offsetAmount:
-            offsetY -= offsetAmount
-        else:
-            offsetY = 0
-    if keys[pygame.K_DOWN]:
-        if offsetY + offsetAmount <= worldH - screenH:
-            offsetY += offsetAmount
-        else:
-            offsetY = worldH - screenH
-                            
-
     screen.fill((0, 0, 0)) # Clears the screen
     screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH))
 
     # Renders the minimap
     minimap = world.copy()
-    pygame.draw.rect(minimap, (255, 0, 0), (offsetX, offsetY, screenW, screenH), 10)
-    screen.blit(pygame.transform.scale(minimap, (100, 100)), (0, 0))
+    pygame.draw.rect(minimap, (255, 0, 0), (offsetX, offsetY))
+    screen.blit(pygame.transform.scale(world, (100, 100)), (0, 0))
     
     pygame.display.update()
