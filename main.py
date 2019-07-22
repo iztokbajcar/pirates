@@ -29,32 +29,9 @@ while True:
         if event.type == pygame.QUIT:
             pygame.display.quit()
             pygame.quit()
-            sys.exit()
-
-    keys = pygame.key.get_pressed()
-        
-    if keys[pygame.K_LEFT]:
-        if offsetX >= offsetAmount:
-            offsetX -= offsetAmount
-        else:
-            offsetX = 0
-    if keys[pygame.K_RIGHT]:
-        if offsetX + offsetAmount <= worldW - screenW:
-            offsetX += offsetAmount
-        else:
-            offsetX = worldW - screenW
-    if keys[pygame.K_UP]:
-        if offsetY >= offsetAmount:
-            offsetY -= offsetAmount
-        else:
-            offsetY = 0
-    if keys[pygame.K_DOWN]:
-        if offsetY + offsetAmount <= worldH - screenH:
-            offsetY += offsetAmount
-        else:
-            offsetY = worldH - screenH
-                            
+            sys.exit()                          
 
     screen.fill((0, 0, 0)) # Clears the screen
-    screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH)) 
+    screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH))
+
     pygame.display.update()
