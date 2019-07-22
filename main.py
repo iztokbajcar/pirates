@@ -1,21 +1,21 @@
 import pygame
 import sys
 
-# Dimenziji okna
+# Game window dimensions
 screenW = 500
 screenH = 500
 
-# Slika sveta oz. igralnega polja
+# Image of the game world
 world = pygame.image.load("world.png")
 worldW = world.get_width()
 worldH = world.get_height()
 
-# Zamik zgornjega levega kota izrisane slike
-# Na začetku je nastavljen tako, da okno prikazuje sredino sveta
+# Offset of the drawn image
+# Initially set to show the center of the game world
 offsetX = int(worldW / 2 - screenW / 2)
 offsetY = int(worldH / 2 - screenH / 2)
 
-offsetAmount = 1 # Za koliko se ob pritisku puščice zamakne pogled
+offsetAmount = 1
 
 pygame.init()
 
@@ -25,7 +25,7 @@ pygame.display.set_caption("Pirates")
 while True:
 
     for event in pygame.event.get():
-        # Če je uporabnik kliknil na gumb za zaprtje okna, konča program
+        # Kill the program when requested by the user
         if event.type == pygame.QUIT:
             pygame.display.quit()
             pygame.quit()
@@ -55,6 +55,6 @@ while True:
             offsetY = worldH - screenH
                             
 
-    screen.fill((0, 0, 0))
-    screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH))
+    screen.fill((0, 0, 0)) # Clears the screen
+    screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH)) 
     pygame.display.update()
