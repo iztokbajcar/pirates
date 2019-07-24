@@ -1,5 +1,6 @@
 import pygame
 import sys
+import time
 
 # Game window dimensions
 screenW = 500
@@ -22,16 +23,31 @@ pygame.init()
 screen = pygame.display.set_mode((screenW, screenH))
 pygame.display.set_caption("Pirates")
 
+# Frame rate
+FPS = 3600
+lastUpdate = time.time()
+
 while True:
+
+    currentTime = time.time()
+    elapsed = currentTime - lastUpdate
+    print(elapsed)
+
+    keys = pygame.key.get_pressed()
 
     for event in pygame.event.get():
         # Kill the program when requested by the user
         if event.type == pygame.QUIT:
             pygame.display.quit()
             pygame.quit()
-            sys.exit()                          
+            sys.exit()
 
-    screen.fill((0, 0, 0)) # Clears the screen
+    screen.fill((0, 0, 0))  # Clears the screen
     screen.blit(world, (0, 0), (offsetX, offsetY, screenW, screenH))
 
-    pygame.display.update()
+    # Only render the game if the right amount of
+    # time (based on the FPS) has elapsed
+    if elapsed >= 1 / FPS:
+        pygame.display.update()
+        lastUpdate = currentTime
+
