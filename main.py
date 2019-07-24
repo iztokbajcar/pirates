@@ -33,8 +33,6 @@ while True:
     elapsed = currentTime - lastUpdate
     print(elapsed)
 
-    keys = pygame.key.get_pressed()
-
     for event in pygame.event.get():
         # Kill the program when requested by the user
         if event.type == pygame.QUIT:
@@ -50,4 +48,3 @@ while True:
     if elapsed >= 1 / FPS:
         pygame.display.update()
         lastUpdate = currentTime
-
