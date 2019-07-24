@@ -24,7 +24,7 @@ screen = pygame.display.set_mode((screenW, screenH))
 pygame.display.set_caption("Pirates")
 
 # Frame rate
-FPS = 3600
+FPS = 10000
 lastUpdate = time.time()
 
 while True:
