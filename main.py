@@ -34,7 +34,7 @@ while True:
 
     # Renders the minimap
     minimap = world.copy()
-    pygame.draw.rect(minimap, (255, 0, 0), (offsetX, offsetY))
-    screen.blit(pygame.transform.scale(world, (100, 100)), (0, 0))
+    pygame.draw.rect(minimap, (255, 0, 0), (offsetX, offsetY, screenW, screenH), 10)
+    screen.blit(pygame.transform.scale(minimap, (100, 100)), (0, 0))
     
     pygame.display.update()
